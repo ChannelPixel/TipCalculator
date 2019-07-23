@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:danielCherrin_TipCalc"
+             x:Class="danielCherrin_TipCalc.MainPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Text="Bill" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start"/>
+            <Label Text="Tip" Grid.Column="0" Grid.Row="1" HorizontalOptions="Start"/>
+            <Label Text="Total" Grid.Column="0" Grid.Row="2" HorizontalOptions="Start"/>
+
+            <Label x:Name="billAmountLabel" Text="$-" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start"/>
+            <Label x:Name="tipAmountLabel" Text="$-" Grid.Column="1" Grid.Row="1" HorizontalOptions="Start"/>
+            <Label x:Name="totalAmountLabel" Text="$-" Grid.Column="1" Grid.Row="2" HorizontalOptions="Start"/>
+
+            <Picker x:Name="cmbbx_foreignCurr" SelectedIndexChanged="cmbbx_foreignCurr_SelectedIndexChanged"
+                HorizontalOptions="Center" Grid.Column="2" Grid.Row="0">
+                <Picker.Items>
+                    <x:String>USD</x:String>
+                    <x:String>CNY</x:String>
+                    <x:String>EUR</x:String>
+                    <x:String>PHP</x:String>
+                    <x:String>GBP</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label x:Name="foreignBillAmountLabel" Text="$-" Grid.Column="3" Grid.Row="0" HorizontalOptions="End"/>
+            <Label x:Name="foreignTipAmountLabel" Text="$-" Grid.Column="3" Grid.Row="1" HorizontalOptions="End"/>
+            <Label x:Name="foreignTotalAmountLabel" Text="$-" Grid.Column="3" Grid.Row="2" HorizontalOptions="End"/>
+            
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Text="7" Pressed="Button_Pressed" Grid.Row="0" Grid.Column="0" Margin="5"/>
+            <Button Text="8" Pressed="Button_Pressed" Grid.Row="0" Grid.Column="1" Margin="5"/>
+            <Button Text="9" Pressed="Button_Pressed" Grid.Row="0" Grid.Column="2" Margin="5"/>
+                                                                                           
+            <Button Text="4" Pressed="Button_Pressed" Grid.Row="1" Grid.Column="0" Margin="5"/>
+            <Button Text="5" Pressed="Button_Pressed" Grid.Row="1" Grid.Column="1" Margin="5"/>
+            <Button Text="6" Pressed="Button_Pressed" Grid.Row="1" Grid.Column="2" Margin="5"/>
+                                                                                           
+            <Button Text="1" Pressed="Button_Pressed" Grid.Row="2" Grid.Column="0" Margin="5"/>
+            <Button Text="2" Pressed="Button_Pressed" Grid.Row="2" Grid.Column="1" Margin="5"/>
+            <Button Text="3" Pressed="Button_Pressed" Grid.Row="2" Grid.Column="2" Margin="5"/>
+                                                                                           
+            <Button Text="0" Pressed="Button_Pressed" Grid.Row="3" Grid.Column="0" Margin="5"/>
+            <Button Text="." Pressed="Button_Pressed" Grid.Row="3" Grid.Column="1" Margin="5"/>
+            <Button Text="C" Pressed="Button_Pressed" Grid.Row="3" Grid.Column="2" Margin="5"/>
+
+        </Grid>
+        
+        <Slider Grid.Row="2" Grid.Column="0"
+                HorizontalOptions="StartAndExpand" x:Name="percentageSlider"
+                Minimum="0" Maximum="100" Value="10" WidthRequest="150" Margin="10"
+                ValueChanged="percentageSlider_ValueChanged"/>
+        <Label Grid.Row="2" Grid.Column="1"  Margin="10,10,0,10" BindingContext="{x:Reference percentageSlider}"
+                Text="{Binding Path=Value}" HorizontalOptions="Start" VerticalOptions="Start"/>
+        <Label Grid.Row="2" Grid.Column="2"
+                Text="%" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,10,10,0"/>
+    </Grid>
+    
+</ContentPage>
